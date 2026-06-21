@@ -5,15 +5,12 @@ public interface MyMap {
 
 	void put( String key, Object value );
 
-	Entry get( int key);
+	Entry get( String key);
 
-	Set<Integer> keySet();
+	Set<String> keySet();
 
 	List<Entry> values();
 
-	boolean remove(int key);
+	boolean remove(String key);
 
-	int size();
-
-	void clear();
 }
