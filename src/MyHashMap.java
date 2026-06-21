@@ -56,7 +56,7 @@ public class MyHashMap  implements MyMap {
 		for (Entry entry : entries) {
 			Entry existing = entry;
 			while (existing != null) {
-				result.add((Entry) existing.getValue());
+				result.add(existing);
 				existing = existing.getNext();
 			}
 		}
@@ -88,6 +88,16 @@ public class MyHashMap  implements MyMap {
 		return false;
 	}
 
+	@Override
+	public void clear() {
+		entries = new Entry[INITIAL_CAPACITY];
+		size = 0;
+	}
+
+	@Override
+	public int size() {
+		return size;
+	}
 	private void increaseCapacity( ) {
 		Entry[] newEntries = new Entry[entries.length * 2];
 		for (Entry entry : entries) {

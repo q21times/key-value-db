@@ -13,4 +13,7 @@ public interface MyMap {
 
 	boolean remove(String key);
 
+	int size();
+
+	void clear();
 }
