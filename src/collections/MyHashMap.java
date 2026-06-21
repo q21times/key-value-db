@@ -1,3 +1,8 @@
+package collections;
+
+import entity.Entry;
+import interfaces.MyMap;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

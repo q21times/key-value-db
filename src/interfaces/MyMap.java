@@ -1,3 +1,7 @@
+package interfaces;
+
+import entity.Entry;
+
 import java.util.List;
 import java.util.Set;
 

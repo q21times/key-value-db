@@ -1,3 +1,8 @@
+package test;
+
+import collections.MyHashMap;
+import entity.Entry;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -15,7 +20,7 @@ class MyHashMapTest {
 		Entry entry = map.get("name");
 
 		assertNotNull(entry);
-		assertEquals("Daniil", entry.getValue());
+		Assertions.assertEquals("Daniil", entry.getValue());
 	}
 
 	@Test
@@ -32,8 +37,8 @@ class MyHashMapTest {
 		map.put("name", "Ivan");
 		map.put("name", "Daniil");
 
-		assertEquals(1, map.size());
-		assertEquals("Daniil", map.get("name").getValue());
+		Assertions.assertEquals(1, map.size());
+		Assertions.assertEquals("Daniil", map.get("name").getValue());
 	}
 
 	@Test
@@ -45,7 +50,7 @@ class MyHashMapTest {
 		boolean removed = map.remove("name");
 
 		assertTrue(removed);
-		assertEquals(0, map.size());
+		Assertions.assertEquals(0, map.size());
 		assertNull(map.get("name"));
 	}
 
@@ -53,7 +58,7 @@ class MyHashMapTest {
 	void shouldReturnFalseWhenRemovingMissingKey() {
 		MyHashMap map = new MyHashMap();
 
-		assertFalse(map.remove("unknown"));
+		Assertions.assertFalse(map.remove("unknown"));
 	}
 
 	@Test
@@ -62,8 +67,8 @@ class MyHashMapTest {
 
 		map.put("name", "Daniil");
 
-		assertTrue(map.containsKey("name"));
-		assertFalse(map.containsKey("age"));
+		Assertions.assertTrue(map.containsKey("name"));
+		Assertions.assertFalse(map.containsKey("age"));
 	}
 
 	@Test
@@ -89,8 +94,8 @@ class MyHashMapTest {
 
 		map.clear();
 
-		assertEquals(0, map.size());
-		assertTrue(map.keySet().isEmpty());
+		Assertions.assertEquals(0, map.size());
+		Assertions.assertTrue(map.keySet().isEmpty());
 	}
 
 	@Test
@@ -101,7 +106,7 @@ class MyHashMapTest {
 		map.put("b", 2);
 		map.put("c", 3);
 
-		assertEquals(3, map.size());
+		Assertions.assertEquals(3, map.size());
 	}
 
 	@Test
@@ -111,8 +116,8 @@ class MyHashMapTest {
 		map.put("FB", "first");
 		map.put("Ea", "second");
 
-		assertEquals("first", map.get("FB").getValue());
-		assertEquals("second", map.get("Ea").getValue());
+		Assertions.assertEquals("first", map.get("FB").getValue());
+		Assertions.assertEquals("second", map.get("Ea").getValue());
 	}
 
 	@Test
@@ -122,10 +127,10 @@ class MyHashMapTest {
 		map.put("FB", "first");
 		map.put("Ea", "second");
 
-		assertTrue(map.remove("FB"));
+		Assertions.assertTrue(map.remove("FB"));
 
 		assertNull(map.get("FB"));
-		assertEquals("second", map.get("Ea").getValue());
+		Assertions.assertEquals("second", map.get("Ea").getValue());
 	}
 
 	@Test
@@ -136,10 +141,10 @@ class MyHashMapTest {
 			map.put("key" + i, "value" + i);
 		}
 
-		assertEquals(100, map.size());
+		Assertions.assertEquals(100, map.size());
 
 		for (int i = 0; i < 100; i++) {
-			assertEquals(
+			Assertions.assertEquals(
 					"value" + i,
 					map.get("key" + i).getValue()
 			);
