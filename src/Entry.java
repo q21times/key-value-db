@@ -33,16 +33,12 @@ public class Entry {
 
 	@Override
 	public boolean equals( Object o ) {
-		if (o instanceof Entry) {
-			Entry entry = (Entry) o;
-			return entry.key.equals(key) && entry.value.equals(value);
-		} else {
-		 	return false;
-		}
+		if (!(o instanceof Entry entry)) return false;
+		return Objects.equals(key, entry.key) && Objects.equals(value, entry.value) && Objects.equals(next, entry.next);
 	}
 
 	@Override
 	public int hashCode( ) {
-		return Objects.hash(key, value);
+		return Objects.hash(key, value, next);
 	}
 }

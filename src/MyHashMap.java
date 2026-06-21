@@ -10,8 +10,28 @@ public class MyHashMap  implements MyMap {
 	private int size = 0;
 
 	@Override
-	public void put( int key, Object value ) {
+	public void put( String key, Object value ) {
+		int pos = getElemPos(key, entries.length);
+		Entry existing = entries[pos];
+		if( existing == null ) {
+			Entry entry = new Entry(key, value, null);
+			entries[pos] = entry;
+			size++;
+		}else {
+			while(true) {
+				if (existing.getKey().equals(key)) {
+					existing.setValue(value);
+					return;
+				}
+				if(existing.getNext() == null) {
+					existing.setNext(new Entry(key,    value, null));
+					size++;
+					return;
+				}
+				existing = existing.getNext();
+			}
 
+		}
 	}
 
 	@Override
@@ -44,7 +64,7 @@ public class MyHashMap  implements MyMap {
 
 	}
 
-	private int getElemPos(int key, int arrLenght ) {
-		return Math.abs(key) % arrLenght;
+	private int getElemPos(String key, int arrLength ) {
+		return Math.abs(key.hashCode() % arrLength);
 	}
 }

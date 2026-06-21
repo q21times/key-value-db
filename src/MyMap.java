@@ -3,9 +3,9 @@ import java.util.Set;
 
 public interface MyMap {
 
-	void put (int key, Object value);
+	void put( String key, Object value );
 
-	Entry get(int key);
+	Entry get( int key);
 
 	Set<Integer> keySet();
 
